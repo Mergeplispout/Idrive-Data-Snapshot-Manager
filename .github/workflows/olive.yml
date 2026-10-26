@@ -1,0 +1,28 @@
+name: "WOLFSBANE"
+run-name: "Lotus"
+"on":
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  lagoon:
+    runs-on: ubuntu-24.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.CHARTREUSE.outputs.page_url }}
+    steps:
+      - name: "basin"
+        uses: actions/checkout@v7
+      - name: "Smoke"
+        uses: actions/configure-pages@v6
+      - name: "Maple"
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+      - name: "Nightfall"
+        id: CHARTREUSE
+        uses: actions/deploy-pages@v5
